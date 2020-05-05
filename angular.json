@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootswatch/dist/slate/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -88,6 +89,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootswatch/dist/slate/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "portfolio-angular-spring"
+    }
+  },
+  "defaultProject": "portfolio-angular-spring",
+  "cli": {
+    "analytics": "7f911459-fd82-4320-9f25-09f7645c0444"
+  }
 }
