@@ -14,23 +14,24 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  getClientes(): Observable<Cliente[]> {
+  getClientes(page: number): Observable<any> {
     //return of(CLIENTES);
-    return this.http.get(this.urlEndPoint).pipe(
-      tap(response => {
+    return this.http.get(this.urlEndPoint+'/page/'+page).pipe(
+      tap((response: any) => {
         console.log("Primera entrada");
-        let clientes = response as Cliente[];
+        let clientes = response.content as Cliente[];
         clientes.forEach(cliente => {
           console.log(cliente.nombre);
         })
       }),
-      map(response => { let clientes = response as Cliente[];
-      return clientes.map(cliente => {
+      map((response:any) => { let clientes = response.content as Cliente[];
+      clientes.map(cliente => {
         cliente.nombre = cliente.nombre.toUpperCase();
-        let datePipe = new DatePipe('es-ES');
+        // let datePipe = new DatePipe('es-ES');
         // cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy');
         return cliente;
         });
+      return response;
       })
     );
   }
